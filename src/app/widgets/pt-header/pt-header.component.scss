@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  color: white;
+  background-color: #1976d2;
+}
+
+.pt-toolbar {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  height: 6rem;
+}
+
+.pt-toolbar img {
+  margin: 0 1.6rem;
+}
+
+.pt-nav-separator {
+  margin: 0 1.6rem;
+}
+
+nav {
+  font-size: 1.6rem;
+  font-weight: 600;
+}

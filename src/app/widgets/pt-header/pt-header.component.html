@@ -1,0 +1,19 @@
+<div class="pt-toolbar" role="banner">
+  <img
+    width="40"
+    alt="Patient Management System Logo"
+    [routerLink]="['/']"
+    src="assets/hospital-medical-svgrepo-com.svg"
+  />
+  <span>Welcome to Patient Management System!</span>
+</div>
+
+<span class="pt-nav-separator">|</span>
+
+<mat-button-toggle-group name="navigation" aria-label="items to navigate">
+  <mat-button-toggle value="patients" [routerLink]="['/patients']"
+    >Patients</mat-button-toggle
+  >
+</mat-button-toggle-group>
+
+<span class="pt-nav-separator">|</span>
