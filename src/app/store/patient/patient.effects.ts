@@ -48,12 +48,11 @@ export class PatientEffects {
       mergeMap((action) =>
         this.patientService.newPatient(action.patient).pipe(
           first(),
-          map((patient) => {
-            debugger;
-            return PatientActions.addPatientSuccess({
+          map((patient) =>
+            PatientActions.addPatientSuccess({
               patient,
-            });
-          }),
+            })
+          ),
           catchError(() => {
             this.router.navigate(['/']);
             return of(PatientActions.addPatientFailure());
@@ -69,12 +68,11 @@ export class PatientEffects {
       mergeMap((action) =>
         this.patientService.updatePatient(action.patientUpdate).pipe(
           first(),
-          map((patient) => {
-            debugger;
-            return PatientActions.updatePatientSuccess({
+          map((patient) =>
+            PatientActions.updatePatientSuccess({
               patientUpdate: { id: patient.id, changes: patient },
-            });
-          }),
+            })
+          ),
           catchError(() => {
             this.router.navigate(['/']);
             return of(PatientActions.addPatientFailure());

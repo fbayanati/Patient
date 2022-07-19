@@ -101,7 +101,6 @@ export const reducer = createReducer(
     isLoading: true,
   })),
   on(PatientActions.updatePatientSuccess, (state, action) => {
-    debugger;
     const updatedState = adapter.updateOne(action.patientUpdate, state);
     return {
       ...updatedState,
