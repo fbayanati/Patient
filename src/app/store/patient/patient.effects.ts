@@ -5,7 +5,7 @@ import { PatientService } from './api/patient.service';
 
 import * as PatientActions from './patient.actions';
 
-import { of } from 'rxjs';
+import { of, first } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
 @Injectable()
@@ -40,6 +40,48 @@ export class PatientEffects {
     {
       dispatch: false,
     }
+  );
+
+  newPatients$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PatientActions.addPatient),
+      mergeMap((action) =>
+        this.patientService.newPatient(action.patient).pipe(
+          first(),
+          map((patient) => {
+            debugger;
+            return PatientActions.addPatientSuccess({
+              patient,
+            });
+          }),
+          catchError(() => {
+            this.router.navigate(['/']);
+            return of(PatientActions.addPatientFailure());
+          })
+        )
+      )
+    )
+  );
+
+  updatePatients$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PatientActions.updatePatient),
+      mergeMap((action) =>
+        this.patientService.updatePatient(action.patientUpdate).pipe(
+          first(),
+          map((patient) => {
+            debugger;
+            return PatientActions.updatePatientSuccess({
+              patientUpdate: { id: patient.id, changes: patient },
+            });
+          }),
+          catchError(() => {
+            this.router.navigate(['/']);
+            return of(PatientActions.addPatientFailure());
+          })
+        )
+      )
+    )
   );
 
   constructor(

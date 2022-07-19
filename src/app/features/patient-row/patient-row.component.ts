@@ -89,8 +89,4 @@ export class PatientRowComponent {
       ? `${this.patient.firstName.trim()} ${this.patient.lastName.trim()}`
       : '';
   }
-
-  onPatientNameClick() {
-    console.log(this.patient);
-  }
 }

@@ -1,3 +1,4 @@
+T
 <div class="pt-list-nav">
   <div class="pt-list-nav-back">
     <button
@@ -9,6 +10,17 @@
     >
       <mat-icon>arrow_back</mat-icon>
       <span class="pt-list-nav-back-label">Back to home page</span>
+    </button>
+  </div>
+  <div class="pt-list-nav-new">
+    <button
+      class="pt-list-nav-new-btn"
+      mat-raised-button
+      color="primary"
+      aria-label="New Patient"
+      (click)="openNewPatientDialog()"
+    >
+      New Patient
     </button>
   </div>
   <div class="pt-list-nav-pagination">
@@ -30,10 +42,10 @@
     >
       <mat-icon>navigate_before</mat-icon>
     </button>
-    <span class="pt-list-nav-pagination-pages">Page 1 of 20</span>
-    <!-- <span class="pt-list-nav-pagination-pages"
+    <!-- <span class="pt-list-nav-pagination-pages">Page 1 of 20</span> -->
+    <span class="pt-list-nav-pagination-pages"
       >Page {{ searchPage$ | async }} of {{ totalPages$ | async }}</span
-    > -->
+    >
     <button
       mat-icon-button
       color="primary"

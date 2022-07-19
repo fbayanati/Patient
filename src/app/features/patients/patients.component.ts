@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, tap } from 'rxjs';
 import { StoreState } from 'src/app/store';
-import { Patient } from 'src/app/store/patient/models';
+import { Patient, PatientModalData } from 'src/app/store/patient/models';
 
 import * as PatientActions from '../../store/patient/patient.actions';
 import * as PatientSelectors from '../../store/patient/patient.selectors';
+import { PatientDetailComponent } from '../patient-detail/patient-detail.component';
 
 @Component({
   selector: 'pt-patients',
@@ -24,7 +25,7 @@ export class PatientsComponent {
 
   private readonly perPage = 10;
 
-  constructor(private store: Store<StoreState>, private fb: FormBuilder) {
+  constructor(private store: Store<StoreState>, public dialog: MatDialog) {
     this.patientsForPage$ = this.store.pipe(
       select(PatientSelectors.selectPatientsForCurrentPage)
     );
@@ -115,5 +116,20 @@ export class PatientsComponent {
 
   get isLastPageDisabled(): boolean {
     return this.searchPage === this.totalPage;
+  }
+
+  openNewPatientDialog(): void {
+    const patientModalData: PatientModalData = {
+      patient: undefined,
+      isNew: true,
+    };
+
+    const dialogRef = this.dialog.open(PatientDetailComponent, {
+      data: patientModalData,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // TODO :: whatever necessary
+    });
   }
 }

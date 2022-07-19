@@ -9,6 +9,7 @@ import { catchError, map, Observable, throwError, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MapStatePatients, Patient } from '../models';
 import pick from 'lodash/pick';
+import { Update } from '@ngrx/entity';
 
 @Injectable({
   providedIn: 'root',
@@ -70,5 +71,31 @@ export class PatientService {
         map((response) => true),
         catchError(this.onError)
       );
+  }
+
+  newPatient(patient: Patient): Observable<Patient> {
+    let params = new HttpParams();
+
+    return this.http
+      .post<Patient>(`${environment.api.patients}`, patient, {
+        headers: new HttpHeaders({}),
+        params,
+      })
+      .pipe(catchError(this.onError));
+  }
+
+  updatePatient(patientUpdate: Update<Patient>): Observable<Patient> {
+    let params = new HttpParams();
+
+    return this.http
+      .put<Patient>(
+        `${environment.api.patients}/${patientUpdate.id}`,
+        patientUpdate.changes,
+        {
+          headers: new HttpHeaders({}),
+          params,
+        }
+      )
+      .pipe(catchError(this.onError));
   }
 }

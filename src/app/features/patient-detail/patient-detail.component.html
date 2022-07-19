@@ -66,16 +66,29 @@
         />
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="pt-form-clinic">
+      <mat-form-field
+        class="example-full-width"
+        appearance="fill"
+        class="pt-form-clinic"
+      >
         <mat-label>Clinic</mat-label>
         <input
           type="text"
-          id="clinic"
-          placeholder="Clinic name"
+          placeholder="Pick the clinic name"
+          aria-label="clinic name"
           matInput
           [readonly]="isReadOnly()"
           formControlName="clinic"
+          [matAutocomplete]="auto"
         />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions$ | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
   </form>
@@ -104,19 +117,22 @@
     [mat-dialog-close]="true"
     cdkFocusInitial
     *ngIf="data?.isUpdate"
+    color="primary"
+    [disabled]="!patientForm.valid"
     (click)="onPatientUpdate()"
   >
-    save
+    Save
   </button>
 
   <button
-    mat-button
+    mat-raised-button
     [mat-dialog-close]="true"
     cdkFocusInitial
     *ngIf="data?.isNew"
+    color="primary"
+    [disabled]="!patientForm.valid"
     (click)="onPatientNew()"
   >
-    save
+    Save
   </button>
-  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
 </mat-dialog-actions>

@@ -14,8 +14,7 @@
       "firstName": "Heall",
       "lastName": "Defty",
       "email": "hdefty1@vk.com",
-      "gender": "Male",
-      "address": "61 Warner Center",
+      "address": "61 Warner Center 1000 10000 100000",
       "healthCareId": "1442749679",
       "clinic": "CLINIQUE LABORATORIES INC"
     },
@@ -24,8 +23,7 @@
       "firstName": "Katerina",
       "lastName": "Whitnall",
       "email": "kwhitnall2@moonfruit.com",
-      "gender": "Female",
-      "address": "986 Thackeray Place",
+      "address": "986 Thackeray Place 200000 20000000 2000000000000",
       "healthCareId": "3811786393",
       "clinic": "Aruba Aloe Balm NV"
     },
@@ -34,7 +32,6 @@
       "firstName": "Byrann",
       "lastName": "London",
       "email": "blondon3@google.cn",
-      "gender": "Male",
       "address": "04 Ronald Regan Way",
       "healthCareId": "5978388849",
       "clinic": "Reckitt Benckiser LLC"
@@ -44,7 +41,6 @@
       "firstName": "Benita",
       "lastName": "Leven",
       "email": "bleven4@youtube.com",
-      "gender": "Female",
       "address": "07 Thackeray Street",
       "healthCareId": "8115061204",
       "clinic": "Teva Pharmaceuticals USA Inc"

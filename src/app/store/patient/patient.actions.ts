@@ -28,6 +28,15 @@ export const addPatient = createAction(
   props<{ patient: Patient }>()
 );
 
+export const addPatientSuccess = createAction(
+  '[Patient/API] Add Patient Success',
+  props<{ patient: Patient }>()
+);
+
+export const addPatientFailure = createAction(
+  '[Patient/API] Add Patient Failure'
+);
+
 export const upsertPatient = createAction(
   '[Patient/API] Upsert Patient',
   props<{ patient: Patient }>()
@@ -45,7 +54,16 @@ export const upsertPatients = createAction(
 
 export const updatePatient = createAction(
   '[Patient/API] Update Patient',
-  props<{ patient: Update<Patient> }>()
+  props<{ patientUpdate: Update<Patient> }>()
+);
+
+export const updatePatientSuccess = createAction(
+  '[Patient/API] Update Patient Success',
+  props<{ patientUpdate: Update<Patient> }>()
+);
+
+export const updatePatientFailure = createAction(
+  '[Patient/API] Update Patient Failure'
 );
 
 export const updatePatients = createAction(

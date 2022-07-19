@@ -15,7 +15,6 @@ export interface State extends EntityState<Patient> {
 
 export const adapter: EntityAdapter<Patient> = createEntityAdapter<Patient>();
 
-console.log('initialState :: Patient');
 export const initialState: State = adapter.getInitialState({
   totalCount: 0,
   searchPage: 0,
@@ -25,20 +24,11 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(PatientActions.addPatient, (state, action) =>
-    adapter.addOne(action.patient, state)
-  ),
   on(PatientActions.upsertPatient, (state, action) =>
     adapter.upsertOne(action.patient, state)
   ),
-  on(PatientActions.addPatients, (state, action) =>
-    adapter.addMany(action.patients, state)
-  ),
   on(PatientActions.upsertPatients, (state, action) =>
     adapter.upsertMany(action.patients, state)
-  ),
-  on(PatientActions.updatePatient, (state, action) =>
-    adapter.updateOne(action.patient, state)
   ),
   on(PatientActions.updatePatients, (state, action) =>
     adapter.updateMany(action.patients, state)
@@ -86,7 +76,42 @@ export const reducer = createReducer(
       selectedPatientId: action.id,
     };
   }),
-  on(PatientActions.clearPatients, (state) => adapter.removeAll(state))
+  on(PatientActions.clearPatients, (state) => adapter.removeAll(state)),
+  on(PatientActions.addPatients, (state, action) =>
+    adapter.addMany(action.patients, state)
+  ),
+  on(PatientActions.addPatient, (state, action) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(PatientActions.addPatientSuccess, (state, action) => {
+    const updatedState = adapter.addOne(action.patient, state);
+    return {
+      ...updatedState,
+      totalCount: state.totalCount + 1,
+      isLoading: false,
+    };
+  }),
+  on(PatientActions.addPatientFailure, (state, action) => ({
+    ...state,
+    isLoading: false,
+  })),
+  on(PatientActions.updatePatient, (state, action) => ({
+    ...state,
+    isLoading: true,
+  })),
+  on(PatientActions.updatePatientSuccess, (state, action) => {
+    debugger;
+    const updatedState = adapter.updateOne(action.patientUpdate, state);
+    return {
+      ...updatedState,
+      isLoading: false,
+    };
+  }),
+  on(PatientActions.updatePatientFailure, (state, action) => ({
+    ...state,
+    isLoading: false,
+  }))
 );
 
 export const getSelectedPatientId = (state: State) => state.selectedPatientId;

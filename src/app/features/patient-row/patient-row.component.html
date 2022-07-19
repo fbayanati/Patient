@@ -1,4 +1,4 @@
-<mat-card *ngIf="!!patient; else noPatient" class="prd-card">
+<mat-card *ngIf="!!patient; else noPatient" class="pt-card">
   <mat-card-content>
     <div class="pt-card-content">
       <div class="pt-card-content-name">
@@ -35,7 +35,7 @@
 </mat-card>
 
 <ng-template #noPatient>
-  <mat-card class="prd-card">
+  <mat-card class="pt-card">
     <mat-card-header>
       <mat-icon>personal_injury</mat-icon>
       <mat-card-title>No patient data!</mat-card-title>
