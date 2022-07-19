@@ -1,0 +1,122 @@
+<h1 mat-dialog-title>Patient's dialog</h1>
+<div mat-dialog-content>
+  <form [formGroup]="patientForm" class="pt-form">
+    <div class="pt-form-names">
+      <mat-form-field appearance="fill" class="pt-form-firstname">
+        <mat-label>First Name</mat-label>
+        <input
+          type="text"
+          id="firstName"
+          placeholder="First name"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pt-form-lastname">
+        <mat-label>Last Name</mat-label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Family name"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="lastName"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="pt-form-email-gender">
+      <mat-form-field appearance="fill" class="pt-form-email">
+        <mat-label>Email</mat-label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Family name"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pt-form-address">
+        <mat-label>Address</mat-label>
+        <input
+          type="text"
+          id="address"
+          placeholder="Address"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="address"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="pt-form-id-clinic">
+      <mat-form-field appearance="fill" class="pt-form-health-care-id">
+        <mat-label>Health care Id</mat-label>
+        <input
+          type="text"
+          id="healthCareId"
+          placeholder="Health care Id"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="healthCareId"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pt-form-clinic">
+        <mat-label>Clinic</mat-label>
+        <input
+          type="text"
+          id="clinic"
+          placeholder="Clinic name"
+          matInput
+          [readonly]="isReadOnly()"
+          formControlName="clinic"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close *ngIf="data?.isView">Close</button>
+  <button
+    mat-button
+    mat-dialog-close
+    *ngIf="data?.isDelete || data?.isNew || data?.isUpdate"
+  >
+    Cancel
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    *ngIf="data?.isDelete"
+    (click)="onPatientDelete()"
+  >
+    Delete
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    *ngIf="data?.isUpdate"
+    (click)="onPatientUpdate()"
+  >
+    save
+  </button>
+
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    *ngIf="data?.isNew"
+    (click)="onPatientNew()"
+  >
+    save
+  </button>
+  <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

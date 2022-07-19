@@ -1,0 +1,57 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 127rem;
+
+  .pt-list-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 1rem;
+
+    &-back-btn {
+      width: 100%;
+    }
+
+    &-pagination {
+      &-pages {
+        margin: 0 0.2rem;
+      }
+    }
+  }
+
+  .pt-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    pt-product-card {
+      width: 100%;
+      margin: 1rem 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  :host {
+    margin: 0 3rem;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  :host {
+    margin: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :host {
+    margin: 0 1rem;
+  }
+}

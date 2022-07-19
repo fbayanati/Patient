@@ -1,0 +1,66 @@
+<div class="pt-list-nav">
+  <div class="pt-list-nav-back">
+    <button
+      class="pt-list-nav-back-btn"
+      mat-icon-button
+      color="primary"
+      aria-label="Back to home page"
+      [routerLink]="['/']"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      <span class="pt-list-nav-back-label">Back to home page</span>
+    </button>
+  </div>
+  <div class="pt-list-nav-pagination">
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="First page"
+      [disabled]="isFirstPageDisabled"
+      (click)="onFirstPage()"
+    >
+      <mat-icon>first_page</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Previous page"
+      [disabled]="isPreviousPageDisabled"
+      (click)="onPreviousPage()"
+    >
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <span class="pt-list-nav-pagination-pages">Page 1 of 20</span>
+    <!-- <span class="pt-list-nav-pagination-pages"
+      >Page {{ searchPage$ | async }} of {{ totalPages$ | async }}</span
+    > -->
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Next page"
+      [disabled]="isNextPageDisabled"
+      (click)="onNextPage()"
+    >
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      color="primary"
+      aria-label="Last page"
+      [disabled]="isLastPageDisabled"
+      (click)="onLastPage()"
+    >
+      <mat-icon>last_page</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div class="pt-list">
+  <ng-container *ngIf="this.patientsForPage$ | async as patients">
+    <pt-patient-row
+      *ngFor="let patient of patients; index as i"
+      [patient]="patient"
+      [index]="i"
+    ></pt-patient-row>
+  </ng-container>
+</div>

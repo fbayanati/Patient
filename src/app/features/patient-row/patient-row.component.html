@@ -1,0 +1,44 @@
+<mat-card *ngIf="!!patient; else noPatient" class="prd-card">
+  <mat-card-content>
+    <div class="pt-card-content">
+      <div class="pt-card-content-name">
+        <button (click)="openViewDialog()" mat-button color="primary">
+          {{ patientName }}
+        </button>
+      </div>
+      <div class="pt-card-content-address">
+        {{ patient.address }}
+      </div>
+      <div class="pt-card-content-clinic">
+        {{ patient.clinic }}
+      </div>
+      <div class="pt-card-content-actions">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="delete icon"
+          color="primary"
+          class="pt-card-action-icons"
+          (click)="openDeleteDialog()"
+          >delete</mat-icon
+        >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="edit icon"
+          color="primary"
+          class="pt-card-action-icons"
+          (click)="openUpdateDialog()"
+          >edit</mat-icon
+        >
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #noPatient>
+  <mat-card class="prd-card">
+    <mat-card-header>
+      <mat-icon>personal_injury</mat-icon>
+      <mat-card-title>No patient data!</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</ng-template>

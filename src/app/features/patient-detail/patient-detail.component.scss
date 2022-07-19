@@ -1,0 +1,82 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 96rem;
+}
+
+.pt-form {
+  display: flex;
+  flex-direction: column;
+
+  &-names {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &-firstname,
+  &-lastname {
+    flex: 1;
+  }
+
+  &-email-gender {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &-email {
+    flex: 1;
+  }
+
+  &-address {
+    flex: 2;
+  }
+
+  &-gender-label {
+    margin-right: 1rem;
+  }
+
+  &-id-clinic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &-health-care-id {
+    flex: 1;
+  }
+  &-clinic {
+    flex: 3;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  :host {
+    min-width: 48rem;
+  }
+
+  .pt-card-content {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :host {
+    min-width: 42rem;
+  }
+
+  .pt-card-content {
+    display: flex;
+    flex-direction: row;
+  }
+}
